@@ -34,13 +34,15 @@ public abstract class Vozilo {
         return godinaProizvodnje;
     }
 
-    public void setGodinaProizvodnje(int godinaProizvodnje) {
+    public void setGodinaProizvodnje(int godinaProizvodnje) throws MojaIznimka {
+        if (godinaProizvodnje < 0) {
+            throw new MojaIznimka("Godina proizvodnje ne moze bit negativna !!!!!!!!!!!!", "Korisnik: JOSIP");
+        }
         this.godinaProizvodnje = godinaProizvodnje;
     }
 
     public String prikaziPodatke() {
-        return "Vozilo{" +
-                "regBroj='" + regBroj + '\'' +
+        return "RegBroj='" + regBroj + '\'' +
                 ", marka='" + marka + '\'' +
                 ", godinaProizvodnje=" + godinaProizvodnje +
                 '}';
