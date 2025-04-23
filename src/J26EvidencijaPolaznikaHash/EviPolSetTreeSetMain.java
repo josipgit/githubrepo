@@ -19,7 +19,6 @@ class EviPolSetTreeSetMain {
         // Scanner za čitanje korisničkog unosa
         Scanner scanner = new Scanner(System.in);
 
-        // Beskonačna petlja za glavni izbornik
         while (true) {
             // Ispis glavnog izbornika
             out.println("\n--- Evidencija polaznika ---");
@@ -49,7 +48,7 @@ class EviPolSetTreeSetMain {
                     out.print("Unesite prezime: ");
                     String prezime = scanner.nextLine();
                     out.print("Unesite e-mail: ");
-                    String email = scanner.nextLine().trim();   // trime je da ukloni razmake
+                    String email = scanner.nextLine().trim();   // trim je da ukloni razmake
 
                     // provjeri postoji li vec polaznik sa takvim emailom
                     boolean postoji = false;

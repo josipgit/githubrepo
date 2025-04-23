@@ -1,6 +1,7 @@
 package J26EvidencijaPolaznikaHash;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 import static java.lang.System.out;
@@ -54,6 +55,7 @@ class EviPolArrayListMain {
                         out.println("Nema unesenih polaznika.");
                     } else {
                         out.println("\n--- Popis polaznika ---");
+                        Collections.sort(polaznici);
                         for (Polaznik p : polaznici) {
                             out.println(p);
                         }

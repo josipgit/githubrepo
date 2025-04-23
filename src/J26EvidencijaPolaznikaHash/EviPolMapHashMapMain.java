@@ -1,18 +1,16 @@
 package J26EvidencijaPolaznikaHash;
 
-import java.util.Map;
-import java.util.Scanner;
-import java.util.TreeMap;          // ▶  umjesto HashMap
+import java.util.*;
+
 import static java.lang.System.out;
 
-public class EviPolHashMapMain {   // (naziv može ostati isti)
+public class EviPolMapHashMapMain {
 
     public static void main(String[] args) {
 
-        /* -------------------------------------------------------------
-           TreeMap  → ključevi (e‑mailovi) su SORTIRANI uzlazno.
-        -------------------------------------------------------------- */
-        Map<String, Polaznik> polaznici = new TreeMap<>();   // ▶
+        //dakle kljucevi tipa String su emailovi <KEY, VALUE> = <email, polaznik>
+        HashMap<String, Polaznik> polaznici = new HashMap<>();
+        //Map<String, Polaznik> polaznici = new TreeMap<>();
 
         Scanner scanner = new Scanner(System.in);
 
@@ -50,6 +48,11 @@ public class EviPolHashMapMain {   // (naziv može ostati isti)
                     } else {
                         out.println("\n--- Popis polaznika (sortirano po e‑mailu) ---");
                         for (Polaznik p : polaznici.values()) {   // već sortirano
+                            out.println(p);
+                        }
+                        List<Polaznik> izmijesaniPolaznici = new ArrayList<>(polaznici.values());
+                        Collections.shuffle(izmijesaniPolaznici);
+                        for (Polaznik p : izmijesaniPolaznici) {   // izmjesani polaznici
                             out.println(p);
                         }
                     }

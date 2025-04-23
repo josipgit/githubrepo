@@ -1,7 +1,7 @@
 package J26EvidencijaPolaznikaHash;
 
 // Klasa Polaznik koja implementira Comparable sučelje za sortiranje
-public class Polaznik implements Comparable<Polaznik> {
+public class Polaznik implements Comparable<Polaznik> { //
     // Privatni atributi klase
     private String ime;
     private String prezime;
@@ -28,23 +28,25 @@ public class Polaznik implements Comparable<Polaznik> {
         return email; // Vraća email polaznika
     }
 
-    // Metoda za usporedbu polaznika - koristi se za sortiranje
+    // Metoda compareTo za usporedbu polaznika, koristi se za sortiranje polaznika
     @Override
     public int compareTo(Polaznik other) {
-        /* 1) Primarno sortiramo po prezimenu (A‑Ž)
-           2) Ako je prezime isto, po imenu
-           3) Ako su i ime i prezime isti, po e‑mailu         */
+        //sortiramo po prezimenu
         int prezimeCmp = this.prezime.compareToIgnoreCase(other.prezime);
-        if (prezimeCmp != 0) return prezimeCmp;
+        if (prezimeCmp != 0) return prezimeCmp; //ako je nula onda je isto prezime obojice
 
+        // ako je prezime isto, sortiramo po imenu
         int imeCmp = this.ime.compareToIgnoreCase(other.ime);
         if (imeCmp != 0) return imeCmp;
 
-        // Zadnji kriterij –  e‑mail mora razlikovati “stvarne” duplikate
+        //ako su i ime i prezime isti, sortiramo po e‑mailu
         return this.email.compareToIgnoreCase(other.email);
     }
 
     // Metoda za provjeru jednakosti polaznika
+    // Ova metoda treba nadjačati (override‑ati) istoimenu metodu iz nadklase ili sučelja.
+    // Ako to nije slučaj, prijavi pogrešku
+    // metoda će raditi i bez anotacije, ali se snažno preporučuje koristiti ju
     @Override
     public boolean equals(Object o) {
         if (this == o) return true; // Ako je isti objekt, vraća true
