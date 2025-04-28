@@ -19,7 +19,6 @@ public class JavaSQL {
         try (Connection connection = dataSource.getConnection()){
             out.println("Uspjesno ste spojeni na bazu podataka");
 
-            // preimenovanje drzave
             Statement stmt = connection.createStatement();
             @Language("SQL")
             String updateDrzava = "UPDATE Drzava SET Naziv='Hrvatska' WHERE IDDrzava=1";
@@ -35,9 +34,14 @@ public class JavaSQL {
             int rowAffectedGrad = stmt.executeUpdate("UPDATE Grad SET Naziv='Zagreb' WHERE IDGrad=1");
             out.println("Gradovi su uspjesno odradeni !!!!");
 
+            //String drzava = "Madagaskar";
+            //String sql = String.format("INSERT INTO Drzava (Naziv) VALUES ('%s')", drzava);
+            //int IDDrzava = 5;
+            //String sql1 = String.format("INSERT INTO Drzava (Naziv) VALUES ('%d')", IDDrzava);
+
             // dohvacanje svih drzava
             ResultSet rs = stmt.executeQuery("SELECT IDDrzava, Naziv FROM Drzava");
-            while (rs.next()) {
+            while (rs.next()) { // %d %s znaci da ide prvo Integer pa String
                 System.out.printf("%d %s\n", rs.getInt("IDDrzava"), rs.getString("Naziv"));
             }
             rs.close();
@@ -63,6 +67,5 @@ public class JavaSQL {
         ds.setEncrypt(false);
         return ds;
     }
-
 
 } // end class
