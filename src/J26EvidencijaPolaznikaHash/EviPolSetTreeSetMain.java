@@ -30,7 +30,7 @@ class EviPolSetTreeSetMain {
 
             // Čitanje korisničkog unosa
             int opcija = scanner.nextInt();
-            scanner.nextLine();  // ovo treba da se ocisti newline nakon nextInt()
+            scanner.nextLine();  // ovo treba da se ocisti newline iz buffera nakon nextInt()
             /*
                Objašnjenje zašto je potrebna linija "scanner.nextLine();" :
                Kada korisnik unese broj i pritisne Enter, nextInt() pročita samo broj,

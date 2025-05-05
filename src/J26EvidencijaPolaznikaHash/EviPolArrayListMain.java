@@ -1,5 +1,11 @@
 package J26EvidencijaPolaznikaHash;
 
+import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
+
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -8,6 +14,7 @@ import static java.lang.System.out;
 
 class EviPolArrayListMain {
     public static void main(String[] args) {
+
         ArrayList<Polaznik> polaznici = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
 
@@ -47,6 +54,20 @@ class EviPolArrayListMain {
                     Polaznik noviPolaznik = new Polaznik(ime, prezime, email);
                     polaznici.add(noviPolaznik);
                     out.println("Polaznik je uspješno dodan!");
+
+                    DataSource dataSource = createDataSource();
+                    try (Connection connection = dataSource.getConnection()) {
+                        System.out.println("Uspješno ste spojeni na bazu podataka");
+                        PreparedStatement stmt;
+                        stmt= connection.prepareStatement("INSERT INTO Polaznik (Ime, Prezime) VALUES (?,?)");
+                        for (Polaznik polaznik : polaznici){
+                            stmt.setString(1, polaznik.getIme());
+                            stmt.setString(2, polaznik.getPrezime());
+                            stmt.executeUpdate();
+                        }
+                    } catch (SQLException e) {
+                    }
+
                     break;
 
                 case 2:
@@ -94,5 +115,16 @@ class EviPolArrayListMain {
             }
         }
     } // end main
+
+    private static DataSource createDataSource() {
+        SQLServerDataSource ds = new SQLServerDataSource();
+        ds.setServerName("localhost");
+        //ds.setPortNumber(1433);
+        ds.setDatabaseName("AdventureWorksOBP");
+        ds.setUser("sa");
+        ds.setPassword("SQL");
+        ds.setEncrypt(false);
+        return ds;
+    }
 } // end class
 

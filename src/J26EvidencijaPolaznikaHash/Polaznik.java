@@ -56,7 +56,7 @@ public class Polaznik implements Comparable<Polaznik> { //
         return email.equalsIgnoreCase(polaznik.email);
     }
 
-    // Metoda za izračun hash vrijednosti - važna za HashSet/TreeSet
+    // Metoda za izračun hash vrijednosti, važna je za HashSet/TreeSet
     @Override
     public int hashCode() {
         // Koristi email u lowercase za hash izračun

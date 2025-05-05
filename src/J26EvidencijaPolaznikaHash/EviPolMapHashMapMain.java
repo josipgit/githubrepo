@@ -23,7 +23,7 @@ public class EviPolMapHashMapMain {
             out.print("Odaberite opciju: ");
 
             int opcija = scanner.nextInt();
-            scanner.nextLine(); // očisti newline
+            scanner.nextLine(); // ovo treba da se ocisti newline iz buffera nakon nextInt()
 
             switch (opcija) {
                 case 1: // Unos novog polaznika
@@ -52,7 +52,7 @@ public class EviPolMapHashMapMain {
                         }
                         List<Polaznik> izmijesaniPolaznici = new ArrayList<>(polaznici.values());
                         Collections.shuffle(izmijesaniPolaznici);
-                        for (Polaznik p : izmijesaniPolaznici) {   // izmjesani polaznici
+                        for (Polaznik p : izmijesaniPolaznici) {   // izmijesani polaznici
                             out.println(p);
                         }
                     }
