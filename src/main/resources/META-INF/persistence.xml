@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Standardna XML deklaracija – definira verziju i enkodiranje -->
+
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence" version="3.0">
+    <!-- Korijenski element za konfiguraciju JPA (Java Persistence API)
+         'xmlns' definira XML namespace prema Jakarta EE specifikaciji
+         'version="3.0"' označava verziju Jakarta Persistence specifikacije -->
+
+    <persistence-unit name="library" transaction-type="RESOURCE_LOCAL">
+        <!-- Definira jedinicu postojanosti (persistence unit) s imenom "library"
+             'transaction-type="RESOURCE_LOCAL"' znači da JPA koristi lokalne transakcije
+             (bez aplikacijskog poslužitelja / JTA) – idealno za jednostavne aplikacije i testiranje -->
+
+        <class>org.example.model.Author</class>
+        <class>org.example.model.Book</class>
+        <class>org.example.model.Meal</class>
+        <class>org.example.model.Ingredient</class>
+        <!-- Ovdje navodimo sve entitetske klase koje JPA treba znati i upravljati njima -->
+
+        <properties>
+            <!-- Dio za konfiguraciju veze prema bazi podataka i Hibernate postavki -->
+
+            <property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <!-- JDBC driver koji se koristi – ovdje je to H2 baza u memoriji -->
+
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:h2:mem:test"/>
+            <!-- URL veze na H2 bazu – 'mem:test' znači da se koristi memorijska baza
+                 koja postoji samo za vrijeme trajanja aplikacije -->
+
+            <property name="jakarta.persistence.jdbc.user" value="sa"/>
+            <!-- Korisničko ime za pristup bazi – H2 standardno koristi "sa" -->
+
+            <property name="jakarta.persistence.jdbc.password" value=""/>
+            <!-- Lozinka za bazu – za H2 u memoriji obično ostaje prazna -->
+
+            <!-- Postavke Hibernate ORM alata, koji je implementacija JPA specifikacije -->
+
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+            <!-- Definira koji SQL dijalekt koristi Hibernate – ovdje za H2 bazu -->
+
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+            <!-- Kontrola generiranja strukture baze:
+                 'create-drop' znači: napravi sve tablice pri pokretanju aplikacije
+                 i obriši ih pri gašenju (korisno za testiranje) -->
+
+<!--            <property name="hibernate.show_sql" value="true"/>-->
+            <!-- Prikaži SQL upite koje Hibernate izvršava – korisno za praćenje i debug -->
+
+<!--            <property name="hibernate.format_sql" value="true"/>-->
+            <!-- Formatira SQL upite radi boljeg pregleda u konzoli -->
+        </properties>
+    </persistence-unit>
+</persistence>
