@@ -1,0 +1,19 @@
+Napiši Java aplikaciju koristeći JPA (Java Persistence API) koja upravlja
+autorima i njihovim knjigama. Implementiraj dvosmjernu Many-to-Many vezu
+između entiteta Author i Book.
+
+U glavnom programu:
+    Kreiraj i pohrani nekoliko autora i knjiga u bazu.
+    Poveži više autora s jednom knjigom i više knjiga s jednim autorom.
+    Ispiši sve knjige i njihove autore.
+    Ažuriraj naslov jedne knjige.
+    Obriši jednu knjigu iz baze.
+    Ponovno ispiši knjige i autore kako bi prikazao učinke ažuriranja i brisanja.
+
+Ciljevi i što se uči kroz zadatak:
+    Korištenje JPA anotacija kao što su @Entity, @ManyToMany, @JoinTable.
+    Rad s EntityManager i EntityTransaction.
+    Razumijevanje odnosa između entiteta u relacijskim bazama podataka.
+    Upravljanje transakcijama (begin, commit, rollback).
+    Dohvat podataka JPQL-om (select b from Book b).
+    Upravljanje relacijama u memoriji i njihovo perzistiranje u bazu.

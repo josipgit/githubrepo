@@ -15,6 +15,10 @@
         <class>org.example.model.Book</class>
         <class>org.example.model.Meal</class>
         <class>org.example.model.Ingredient</class>
+        <class>org.example.model.Company</class>
+        <class>org.example.model.Contract</class>
+        <class>org.example.model.Person</class>
+        <class>org.example.model.Zad3User.User</class>
         <!-- Ovdje navodimo sve entitetske klase koje JPA treba znati i upravljati njima -->
 
         <properties>
@@ -51,3 +55,10 @@
         </properties>
     </persistence-unit>
 </persistence>
+
+<!--        Uloga persistence.xml:-->
+<!--        Definira naziv perzistentne jedinice (persistence unit) — npr. "mojaJPAJedinka".-->
+<!--        Sadrži podatke o:-->
+<!--        konekciji prema bazi,-->
+<!--        entitetima (<class>),-->
+<!--        postavkama Hibernate-a ako se koristi kao JPA provider.-->

@@ -1,0 +1,23 @@
+Kreirati novi Java projekt koji će koristiti radne okvire Hibernate i JPA i implementirati
+primjer veze „M:N” s entitetima „Tvrtka” (engl. Company) , „Osoba” (engl. Person) i „Ugovor”
+(engl. Contract).
+
+Klasa „Person” mora sadržavati identifikator „Long id” i naziv „String name”
+te Set objekata klase „Contract” te anotacije „@ManyToMany” i „@JoinTable”.
+
+Klasa „Company” mora sadržavati identifikator „Long id” i naziv „String name”
+i Set objekata klase „Contract” kojem pripada taj sastojak označen s anotacijama
+„@ManyToMany” i „@JoinTable”.
+
+Klasa „Contract” mora sadržavati identifikator „Long id”, varijablu „LocalDate”
+koji označava datum početka ugovora, cjelobrojnu vrijednost koja označava trajanje
+ugovora, „BigDecimal” vrijednost koja predstavlja iznos plaće te Set osoba i Set kompanija
+označenih s „@ManyToMany” anotacijama.
+
+Kreirati i glavnu klasu koja kreira nekoliko entiteta, ažurira jedan od njih i obriše jedan.
+
+Kreirati:
+- pom.xml
+- persistence.xml
+- kreirati klase Company, Contract, Person
+- dodati anotacije za povezivanje klasa(Entiteta)

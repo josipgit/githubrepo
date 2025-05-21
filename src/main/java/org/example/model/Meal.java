@@ -13,6 +13,7 @@ public class Meal {
 
     private String name; // Naziv jela
 
+    //jednom jelu moze pripadati vise sastojaka
     @OneToMany(mappedBy = "meal", cascade = CascadeType.ALL, orphanRemoval = true)
     // mappedBy = "meal" znači da je veza definirana u klasi Ingredient preko polja 'meal'
     // CascadeType.ALL: sve operacije (persist, merge, remove...) se prenose na sastojke
